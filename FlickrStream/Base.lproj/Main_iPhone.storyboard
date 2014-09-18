@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Vtn-kG-y7C">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Just PostedTVC - FlickrStream-->
+        <scene sceneID="Cg0-0N-jNk">
+            <objects>
+                <tableViewController id="h9z-v8-qRu" customClass="JustPostedTVC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ztC-ta-i2d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Flickr Photo Cell" id="QRc-w9-P1U">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QRc-w9-P1U" id="xG7-bq-sbM">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="U7a-BU-ZQz" kind="push" identifier="Display Photo" id="NbP-2b-Sco"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="h9z-v8-qRu" id="bQR-ry-oyh"/>
+                            <outlet property="delegate" destination="h9z-v8-qRu" id="G5A-hu-Hkb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="FlickrStream" id="bcB-Y0-RYC"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="AsE-59-FZG">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="fetchPhotos" destination="h9z-v8-qRu" eventType="valueChanged" id="Os9-DQ-Wsb"/>
+                        </connections>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qsk-y1-a0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="657" y="82"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="b6N-Uo-pFu">
+            <objects>
+                <viewController id="U7a-BU-ZQz" customClass="ImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MfQ-xm-re4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kwb-pO-Web"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="THH-1s-Cve">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdL-AN-9IW">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </scrollView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="q6x-Te-VLR">
+                                <rect key="frame" x="142" y="266" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cdL-AN-9IW" secondAttribute="trailing" id="HHV-y8-00M"/>
+                            <constraint firstItem="cdL-AN-9IW" firstAttribute="top" secondItem="THH-1s-Cve" secondAttribute="top" id="LA3-tG-lj8"/>
+                            <constraint firstAttribute="centerY" secondItem="q6x-Te-VLR" secondAttribute="centerY" id="WZH-zR-MZx"/>
+                            <constraint firstAttribute="centerX" secondItem="q6x-Te-VLR" secondAttribute="centerX" id="h5n-hh-NVo"/>
+                            <constraint firstItem="cdL-AN-9IW" firstAttribute="leading" secondItem="THH-1s-Cve" secondAttribute="leading" id="tcN-uG-S6l"/>
+                            <constraint firstAttribute="bottom" secondItem="cdL-AN-9IW" secondAttribute="bottom" id="yZr-gy-rfr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="JTx-K4-Nx5"/>
+                    <connections>
+                        <outlet property="scrollView" destination="cdL-AN-9IW" id="si3-Ap-gGr"/>
+                        <outlet property="spinner" destination="q6x-Te-VLR" id="nel-VW-nj0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rfC-Xj-whc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105" y="82"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Wd6-xT-Jz3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vtn-kG-y7C" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dHA-o4-eZe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="h9z-v8-qRu" kind="relationship" relationship="rootViewController" id="eoJ-ZO-zJV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aej-XE-bGJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131" y="82"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
