@@ -53,7 +53,7 @@
 
 - (void) prepareImageViewController:(ImageViewController *)ivc toDisplayPhoto:(NSDictionary *)photo
 {
-    ivc.imageURL = [FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatOriginal];
+    ivc.imageURL = [FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatLarge];
     ivc.title = [photo valueForKeyPath:FLICKR_PHOTO_TITLE];
 }
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
